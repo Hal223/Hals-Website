@@ -1,0 +1,233 @@
+{
+  "~": {
+    "type": "directory",
+    "children": {
+      "blog": {
+        "type": "directory",
+        "children": {
+          "another.md": {
+            "type": "file",
+            "path": "blog/another.md"
+          },
+          "how-this-site-was-built.md": {
+            "type": "file",
+            "path": "blog/how-this-site-was-built.md"
+          },
+          "my-first-post.md": {
+            "type": "file",
+            "path": "blog/my-first-post.md"
+          },
+          "wel.txt": {
+            "type": "file",
+            "path": "blog/wel.txt"
+          },
+          "why-i-love-linux.md": {
+            "type": "file",
+            "path": "blog/why-i-love-linux.md"
+          }
+        }
+      },
+      "fonts": {
+        "type": "directory",
+        "children": {
+          "FiraCode": {
+            "type": "directory",
+            "children": {
+              "README.txt": {
+                "type": "file",
+                "path": "fonts/FiraCode/README.txt"
+              },
+              "fira_code.css": {
+                "type": "file",
+                "path": "fonts/FiraCode/fira_code.css"
+              },
+              "specimen.html": {
+                "type": "file",
+                "path": "fonts/FiraCode/specimen.html"
+              },
+              "ttf": {
+                "type": "directory",
+                "children": {
+                  "FiraCode-Bold.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-Bold.ttf"
+                  },
+                  "FiraCode-Light.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-Light.ttf"
+                  },
+                  "FiraCode-Medium.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-Medium.ttf"
+                  },
+                  "FiraCode-Regular.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-Regular.ttf"
+                  },
+                  "FiraCode-Retina.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-Retina.ttf"
+                  },
+                  "FiraCode-SemiBold.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/ttf/FiraCode-SemiBold.ttf"
+                  }
+                }
+              },
+              "variable_ttf": {
+                "type": "directory",
+                "children": {
+                  "FiraCode-VF.ttf": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/variable_ttf/FiraCode-VF.ttf"
+                  }
+                }
+              },
+              "woff": {
+                "type": "directory",
+                "children": {
+                  "FiraCode-Bold.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-Bold.woff"
+                  },
+                  "FiraCode-Light.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-Light.woff"
+                  },
+                  "FiraCode-Medium.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-Medium.woff"
+                  },
+                  "FiraCode-Regular.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-Regular.woff"
+                  },
+                  "FiraCode-SemiBold.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-SemiBold.woff"
+                  },
+                  "FiraCode-VF.woff": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff/FiraCode-VF.woff"
+                  }
+                }
+              },
+              "woff2": {
+                "type": "directory",
+                "children": {
+                  "FiraCode-Bold.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-Bold.woff2"
+                  },
+                  "FiraCode-Light.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-Light.woff2"
+                  },
+                  "FiraCode-Medium.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-Medium.woff2"
+                  },
+                  "FiraCode-Regular.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-Regular.woff2"
+                  },
+                  "FiraCode-SemiBold.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-SemiBold.woff2"
+                  },
+                  "FiraCode-VF.woff2": {
+                    "type": "file",
+                    "path": "fonts/FiraCode/woff2/FiraCode-VF.woff2"
+                  }
+                }
+              }
+            }
+          },
+          "ProggySquare": {
+            "type": "directory",
+            "children": {
+              "ProggySquare.ttf": {
+                "type": "file",
+                "path": "fonts/ProggySquare/ProggySquare.ttf"
+              },
+              "ProggySquareSZ.ttf": {
+                "type": "file",
+                "path": "fonts/ProggySquare/ProggySquareSZ.ttf"
+              }
+            }
+          }
+        }
+      },
+      "images": {
+        "type": "directory",
+        "children": {
+          "An_allegory_of_victory.jpeg": {
+            "type": "file",
+            "path": "images/An_allegory_of_victory.jpeg"
+          },
+          "Atlas_shrugged.png": {
+            "type": "file",
+            "path": "images/Atlas_shrugged.png"
+          },
+          "HP-41C_ad.png": {
+            "type": "file",
+            "path": "images/HP-41C_ad.png"
+          },
+          "Me.jpg": {
+            "type": "file",
+            "path": "images/Me.jpg"
+          },
+          "On_the_way_to_exile.jpg": {
+            "type": "file",
+            "path": "images/On_the_way_to_exile.jpg"
+          },
+          "Red_haze.jpg": {
+            "type": "file",
+            "path": "images/Red_haze.jpg"
+          },
+          "biphasic.png": {
+            "type": "file",
+            "path": "images/biphasic.png"
+          },
+          "hanf.png": {
+            "type": "file",
+            "path": "images/hanf.png"
+          }
+        }
+      },
+      "js": {
+        "type": "directory",
+        "children": {
+          "commands.js": {
+            "type": "file",
+            "path": "js/commands.js"
+          },
+          "main.js": {
+            "type": "file",
+            "path": "js/main.js"
+          },
+          "theme.js": {
+            "type": "file",
+            "path": "js/theme.js"
+          },
+          "utils.js": {
+            "type": "file",
+            "path": "js/utils.js"
+          }
+        }
+      },
+      "projects.json": {
+        "type": "file",
+        "path": "projects.json"
+      },
+      "resume.md": {
+        "type": "file",
+        "path": "resume.md"
+      },
+      "welcome.md": {
+        "type": "file",
+        "path": "welcome.md"
+      }
+    }
+  }
+}

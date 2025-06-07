@@ -1,88 +1,188 @@
-import * as DOM from './domElements.js';
-import * as State from './state.js';
-import * as Storage from './storageManager.js';
-import * as Theme from './themeManager.js';
-import * as UI from './uiManager.js';
-import * as Tabs from './tabManager.js';
-import * as Settings from './settingsManager.js';
-import { generateFullFileConfig } from './config.js';
-// No need to import Content here unless directly using its functions not called by TabManager
+// js/main.js
+import { THEMES, applyTheme } from './theme.js';
+import * as commands from './commands.js';
+import * as utils from './utils.js';
 
-const fullFileConfig = generateFullFileConfig();
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const dom = {
+        output: document.getElementById('output'),
+        commandInput: document.getElementById('command-input'),
+        promptElement: document.getElementById('prompt'),
+        terminal: document.getElementById('terminal'),
+        homeBtn: document.getElementById('home-btn'),
+        backBtn: document.getElementById('back-btn'),
+        themeBtn: document.getElementById('theme-btn'),
+        themeDropdown: document.getElementById('theme-dropdown'),
+    };
 
-async function initializeApp() {
-    DOM.tabsContainer.innerHTML = '';
-    Theme.loadAndApplyPersistedTheme();
-    Settings.initSettingsPanel();
-    UI.initSidebarLinks(fullFileConfig, Tabs.openOrShowTab);
-
-    const savedTabState = Storage.loadTabState();
-    let restoredActiveTab = null;
-
-    if (savedTabState.openTabIdsOrder && savedTabState.openTabIdsOrder.length > 0) {
-        const openPromises = savedTabState.openTabIdsOrder.map(tabId => {
-            if (fullFileConfig[tabId]) return Tabs.openOrShowTab(tabId, false, true);
-            return Promise.resolve();
-        });
-        await Promise.all(openPromises);
-        
-        const fragment = document.createDocumentFragment();
-        savedTabState.openTabIdsOrder.forEach(tabId => {
-            const tabData = State.getOpenTab(tabId);
-            if (tabData && tabData.tabEl?.isConnected) fragment.appendChild(tabData.tabEl);
-        });
-        DOM.tabsContainer.innerHTML = '';
-        DOM.tabsContainer.appendChild(fragment);
-        restoredActiveTab = savedTabState.activeTabId;
-    }
-
-    if (restoredActiveTab && State.getOpenTab(restoredActiveTab)?.tabEl?.isConnected) {
-        Tabs.setActiveTab(restoredActiveTab);
-    } else {
-        const defaultInitialTabId = 'about';
-        if (fullFileConfig[defaultInitialTabId]) {
-            const tabData = State.getOpenTab(defaultInitialTabId);
-            if (!tabData || !tabData.tabEl?.isConnected) await Tabs.openOrShowTab(defaultInitialTabId, true, true);
-            else Tabs.setActiveTab(defaultInitialTabId);
-        } else if (Object.keys(fullFileConfig).length > 0) {
-            const firstConfiguredTabId = Object.keys(fullFileConfig)[0];
-            const tabData = State.getOpenTab(firstConfiguredTabId);
-            if (!tabData || !tabData.tabEl?.isConnected) await Tabs.openOrShowTab(firstConfiguredTabId, true, true);
-            else Tabs.setActiveTab(firstConfiguredTabId);
-        } else {
-            UI.clearEditorView();
-            State.setActiveTabId(null);
-        }
-    }
+    // Application State
+    const state = {
+        fileSystem: {},
+        currentPath: '~',
+        commandHistory: [],
+        historyIndex: -1,
+        EXCLUDED_DIRS: ['images', 'js', 'fonts'],
+    };
     
-    if (DOM.tabsContainer.children.length > 0) {
-        Storage.saveTabState();
-    }
+    const CLEAR_SCREEN_COMMANDS = ['ls', 'll', 'cat', 'help', '?', 'tree', 'search', 'theme'];
 
-    const debouncedLineUpdate = UI.debounce(() => {
-        const activeTab = State.getOpenTab(State.getActiveTabId());
-        if (activeTab && activeTab.sectionEl) UI.updateLineNumbers(activeTab.sectionEl);
-    }, 150);
+    // Command Handlers Map
+    const commandHandlers = {
+        cat: commands.handleCat,
+        ls: commands.handleLs,
+        cd: commands.handleCd,
+        help: commands.handleHelp,
+        '?': commands.handleHelp,
+        ll: (args, context) => commands.handleLs(['-la'], context),
+        tree: commands.handleTree,
+        search: commands.handleSearch,
+        theme: commands.handleTheme,
+        clear: commands.handleClear,
+    };
 
-    if (DOM.contentSectionsContainer) {
-        new ResizeObserver(debouncedLineUpdate).observe(DOM.contentSectionsContainer);
-        DOM.contentSectionsContainer.addEventListener('scroll', () => {
-            if (DOM.lineNumbersContainer && DOM.editorPane.classList.contains('mode-code')) {
-                DOM.lineNumbersContainer.scrollTop = DOM.contentSectionsContainer.scrollTop;
+    // Helper functions that need access to state
+    const updatePrompt = () => {
+        const user = 'your-name';
+        const host = 'portfolio';
+        dom.promptElement.textContent = `${user}@${host}:${state.currentPath}$ `;
+    };
+
+    const addToOutput = (html) => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html;
+        dom.output.appendChild(wrapper);
+    };
+
+    const scrollToBottom = () => {
+        dom.terminal.scrollTop = dom.terminal.scrollHeight;
+    };
+
+    // The context object passed to command handlers
+    const context = {
+        addToOutput,
+        updatePrompt,
+        utils,
+        state,
+        dom,
+        theme: { THEMES, applyTheme }
+    };
+
+    // Main command execution logic
+    const executeCommand = async (cmd) => {
+        const [command, ...args] = cmd.trim().split(' ').filter(i => i);
+
+        if (CLEAR_SCREEN_COMMANDS.includes(command)) {
+            dom.output.innerHTML = '';
+        }
+
+        const outputWrapper = document.createElement('div');
+        outputWrapper.innerHTML = `<div class="command-line"><span class="prompt">${dom.promptElement.textContent}</span>${cmd}</div>`;
+        dom.output.appendChild(outputWrapper);
+
+        if (command) {
+            const handler = commandHandlers[command];
+            if (handler) {
+                await handler(args, context);
+            } else {
+                addToOutput(`<div class="error">bash: command not found: ${command}</div>`);
             }
-        });
-        const mutationObserver = new MutationObserver(() => {
-            if (DOM.editorPane.classList.contains('mode-code')) {
-                const activeTab = State.getOpenTab(State.getActiveTabId());
-                if (activeTab && activeTab.sectionEl?.classList.contains('active')) {
-                    debouncedLineUpdate();
-                }
+        }
+
+        if (cmd) state.commandHistory.unshift(cmd);
+        state.historyIndex = -1;
+
+        // --- UPDATED SCROLLING LOGIC ---
+        // For major commands, scroll to the top of their output.
+        // For minor ones, scroll to the bottom to keep the prompt in view.
+        if (CLEAR_SCREEN_COMMANDS.includes(command)) {
+            outputWrapper.scrollIntoView({ behavior: 'auto', block: 'start' });
+        } else {
+            scrollToBottom();
+        }
+    };
+
+    // Event Listeners
+    dom.commandInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const cmd = dom.commandInput.value;
+            dom.commandInput.value = '';
+            executeCommand(cmd);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (state.historyIndex < state.commandHistory.length - 1) {
+                state.historyIndex++;
+                dom.commandInput.value = state.commandHistory[state.historyIndex];
             }
-        });
-        mutationObserver.observe(DOM.contentSectionsContainer, { childList: true, subtree: true, characterData: true });
-    }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (state.historyIndex > 0) {
+                state.historyIndex--;
+                dom.commandInput.value = state.commandHistory[state.historyIndex];
+            } else {
+                state.historyIndex = -1;
+                dom.commandInput.value = '';
+            }
+        }
+    });
 
-    // Contact form is initialized when its content is loaded by contentManager.js
-}
+    dom.output.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+        if (link.dataset.path) {
+            e.preventDefault();
+            const path = link.dataset.path;
+
+            if (link.classList.contains('directory')) {
+                executeCommand(`cd ${path}`);
+                executeCommand('ls -la');
+            } else if (link.classList.contains('file')) {
+                executeCommand(`cat ${path}`);
+            }
+        } else if (link.dataset.theme) {
+            e.preventDefault();
+            applyTheme(link.dataset.theme, dom.themeDropdown);
+        }
+    });
+
+    dom.homeBtn.addEventListener('click', () => { executeCommand('cd ~'); executeCommand('ls -la'); });
+    dom.backBtn.addEventListener('click', () => { executeCommand('cd ..'); executeCommand('ls -la'); });
+    dom.themeBtn.addEventListener('click', (e) => { e.stopPropagation(); dom.themeDropdown.classList.toggle('hidden'); });
+    window.addEventListener('click', () => { if (!dom.themeDropdown.classList.contains('hidden')) dom.themeDropdown.classList.add('hidden'); });
+
+    // Initialization
+    const bootUp = async () => {
+        for (const key in THEMES) {
+            const option = document.createElement('a');
+            option.className = 'theme-option';
+            option.textContent = THEMES[key].name;
+            option.href = '#';
+            option.onclick = (e) => { e.preventDefault(); applyTheme(key, dom.themeDropdown); };
+            dom.themeDropdown.appendChild(option);
+        }
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'default';
+        applyTheme(savedTheme, dom.themeDropdown);
+
+        try {
+            const response = await fetch('file-manifest.json');
+            if (!response.ok) throw new Error('Failed to load file manifest.');
+            state.fileSystem = await response.json();
+            updatePrompt();
+            
+            const initialContext = { ...context, addToOutput: (html) => { dom.output.innerHTML += html; } };
+            await commands.handleCat(['welcome.md'], initialContext);
+            await commands.handleLs(['-la'], initialContext);
+            
+            state.commandHistory = [];
+        } catch (error) {
+            console.error(error);
+            addToOutput(`<div class="error">FATAL: Could not load file-manifest.json.<br>Please run 'node generate-manifest.js' and refresh.</div>`);
+        }
+    };
+
+    // Configure third-party libraries
+    marked.setOptions({ highlight: function(code, lang) { const language = hljs.getLanguage(lang) ? lang : 'plaintext'; return hljs.highlight(code, { language }).value; } });
+    
+    bootUp();
+});

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Interactive Terminal Portfolio",
+    "description": "This very website! An experiment in UI/UX..",
+    "stack": ["HTML", "CSS", "JavaScript", "Markedown"],
+    "source": "https://github.com/Hal223/Hals-Website"
+  },
+  {
+    "name": "CopernicusDashboard",
+    "description": "A simple, modern web application for organizing test tube blood samples within virtual racks. Designed to run locally without external dependencies, storing data in local JSON files via a lightweight Node.js server.",
+    "stack": ["HTML", "CSS", "Node.js"],
+    "source": "https://github.com/Hal223/tube-rack-tracker"
+  },
+  {
+    "name": "ZoneWrangler",
+    "description": "Supplemental Cisco ASA to FTD migration tool that properly zones ACP and NAT rules.",
+    "stack": ["Python3", "API", "Cisco Firepower Threat Defense"],
+    "source": "Sorry Closed Source"
+  }
+]
