@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CORE FUNCTIONS ---
 
     const updatePrompt = () => {
-        const user = 'your-name';
+        const user = 'Hal';
         const host = 'portfolio';
         promptElement.textContent = `${user}@${host}:${currentPath}$ `;
     };

@@ -306,8 +306,8 @@ body {
 #output .markdown-body h3 {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 5px;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
+    margin-top: .25em;
+    margin-bottom: 0em;
 }
 #output .markdown-body h1 { color: var(--h1-color); }
 #output .markdown-body h2 { color: var(--h2-color); }
@@ -315,23 +315,27 @@ body {
 
 #output .markdown-body p {
     line-height: 1.4;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin-top: 0em;
+    margin-bottom: 0em;
 }
 
 #output .markdown-body ul,
 #output .markdown-body ol {
     margin-top: 0;
+    white-space: normal;
     margin-bottom: 0;
+    margin: 0;
+    padding: 0;
     padding-left: 20px;
-    list-style-type: '- ';
 }
 
 #output .markdown-body li {
-    line-height: 1.4;
-    margin-bottom: 0.2em;
+    line-height: 1.3;
+    margin-bottom: 0em;
 }
-
+#output .markdown-body li p {
+    margin-bottom: 0;
+}
 #output .markdown-body code {
     background-color: var(--header-bg);
     padding: 2px 5px;
@@ -341,16 +345,77 @@ body {
 
 #output .markdown-body pre {
     background-color: var(--header-bg);
+    position: relative;
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
+    margin-top: 0em;
+    margin-bottom: 0.0em;
+}
+
+
+.copy-btn {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    background-color: var(--highlight-bg);
+    color: var(--foreground);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 5px; /* Adjust padding for an icon */
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease;
+    /* Flexbox properties to center the SVG icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copy-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor; /* The SVG will inherit the button's color */
+}
+
+#output .markdown-body pre:hover .copy-btn {
+    opacity: 1;
+}
+
+.copy-btn:hover {
+    background-color: var(--prompt-color);
+    color: var(--background);
 }
 
 #output .markdown-body pre code {
     padding: 0;
     background: none;
+}
+
+/* --- Table Styles for Markdown --- */
+#output .markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    border: 1px solid var(--border-color);
+}
+
+#output .markdown-body th,
+#output .markdown-body td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#output .markdown-body th {
+    background-color: var(--header-bg);
+    color: var(--prompt-color);
+    font-weight: bold;
+}
+
+/* Adds a subtle background to every other row for readability */
+#output .markdown-body tbody tr:nth-child(even) {
+    background-color: var(--header-bg);
 }
 
 #output .markdown-image {

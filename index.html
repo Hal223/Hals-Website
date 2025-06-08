@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>holden-prather@portfolio: ~</title>
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Google Fonts: Fira Code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Third-Party Libraries -->
-    <!-- Highlight.js for syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    
-    <!-- marked.js for Markdown rendering -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <!-- Highlight.js CSS Theme -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
+
 <body>
 
     <div id="terminal-window">
@@ -43,18 +41,28 @@
                 </div>
             </div>
         </div>
-        
-        <div id="terminal" onclick="document.getElementById('command-input').focus();">
+
+        <div id="terminal">
             <div id="output"></div>
             <div class="input-line">
                 <span id="prompt" class="prompt"></span>
-                <input type="text" id="command-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" autofocus>
+                <input type="text" id="command-input" autocomplete="off" autocorrect="off" autocapitalize="off"
+                    spellcheck="false" autofocus>
             </div>
         </div>
     </div>
 
-    <!-- Main Application Script (as a module) -->
-    <script type="module" src="js/main.js"></script>
+    <!-- 
+      Third-Party and Application Scripts
+      The 'defer' attribute is crucial. It ensures that scripts are executed in order
+      after the document has been parsed, preventing race conditions where a script
+      runs before its dependencies (like highlight.js) are ready.
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script type="module" src="js/main.js" defer></script>
 
 </body>
+
 </html>

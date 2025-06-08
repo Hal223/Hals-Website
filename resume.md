@@ -1,3 +1,5 @@
+[Holden_Prather_Resume.pdf]
+
 # Holden Prather
 
 <span style="color: #eba74e">_Architect | Developer | Engineer_</span>
@@ -101,3 +103,4 @@ _November 2018 - March 2020_
     ├── GDPR
     ├── HIPAA
     └── PCI DSS
+

@@ -2,6 +2,7 @@
 import { THEMES, applyTheme } from './theme.js';
 import * as commands from './commands.js';
 import * as utils from './utils.js';
+import { handleTabCompletion } from './autocomplete.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
@@ -22,12 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPath: '~',
         commandHistory: [],
         historyIndex: -1,
-        EXCLUDED_DIRS: ['images', 'js', 'fonts'],
+        EXCLUDED_DIRS: ['images', 'js'],
     };
     
-    const CLEAR_SCREEN_COMMANDS = ['ls', 'll', 'cat', 'help', '?', 'tree', 'search', 'theme'];
-
-    // Command Handlers Map
+    // Configuration
+    const SCROLL_TO_TOP_COMMANDS = ['ls', 'll', 'cat', 'help', '?', 'tree', 'search', 'theme'];
     const commandHandlers = {
         cat: commands.handleCat,
         ls: commands.handleLs,
@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         clear: commands.handleClear,
     };
 
-    // Helper functions that need access to state
+    // Core Helper Functions
     const updatePrompt = () => {
-        const user = 'your-name';
+        const user = 'Hal';
         const host = 'portfolio';
         dom.promptElement.textContent = `${user}@${host}:${state.currentPath}$ `;
     };
@@ -58,23 +58,21 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.terminal.scrollTop = dom.terminal.scrollHeight;
     };
 
-    // The context object passed to command handlers
+    // The context object passed to handlers
     const context = {
         addToOutput,
         updatePrompt,
         utils,
         state,
         dom,
-        theme: { THEMES, applyTheme }
+        theme: { THEMES, applyTheme },
+        commandHandlers,
+        scrollToBottom,
     };
 
-    // Main command execution logic
+    // Main Command Execution Logic
     const executeCommand = async (cmd) => {
         const [command, ...args] = cmd.trim().split(' ').filter(i => i);
-
-        if (CLEAR_SCREEN_COMMANDS.includes(command)) {
-            dom.output.innerHTML = '';
-        }
 
         const outputWrapper = document.createElement('div');
         outputWrapper.innerHTML = `<div class="command-line"><span class="prompt">${dom.promptElement.textContent}</span>${cmd}</div>`;
@@ -92,19 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cmd) state.commandHistory.unshift(cmd);
         state.historyIndex = -1;
 
-        // --- UPDATED SCROLLING LOGIC ---
-        // For major commands, scroll to the top of their output.
-        // For minor ones, scroll to the bottom to keep the prompt in view.
-        if (CLEAR_SCREEN_COMMANDS.includes(command)) {
+        if (SCROLL_TO_TOP_COMMANDS.includes(command)) {
             outputWrapper.scrollIntoView({ behavior: 'auto', block: 'start' });
         } else {
             scrollToBottom();
         }
     };
 
+    dom.terminal.addEventListener('click', (e) => {
+    // Only focus the input if the user isn't trying to select text.
+    // A simple way to check is if the click target is the terminal div itself
+    // or the output div, and not a link or other interactive element.
+    if (e.target === dom.terminal || e.target === dom.output) {
+        dom.commandInput.focus({ preventScroll: true });
+    }
+});
     // Event Listeners
     dom.commandInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
+        if (e.key === 'Tab') {
+            e.preventDefault(); // Prevent tabbing to the next element
+            handleTabCompletion(context);
+        } else if (e.key === 'Enter') {
             const cmd = dom.commandInput.value;
             dom.commandInput.value = '';
             executeCommand(cmd);
@@ -170,9 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
             state.fileSystem = await response.json();
             updatePrompt();
             
-            const initialContext = { ...context, addToOutput: (html) => { dom.output.innerHTML += html; } };
-            await commands.handleCat(['welcome.md'], initialContext);
-            await commands.handleLs(['-la'], initialContext);
+            await executeCommand('cat welcome.md');
+            await executeCommand('ls -la');
             
             state.commandHistory = [];
         } catch (error) {
@@ -182,7 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Configure third-party libraries
-    marked.setOptions({ highlight: function(code, lang) { const language = hljs.getLanguage(lang) ? lang : 'plaintext'; return hljs.highlight(code, { language }).value; } });
+marked.setOptions({
+    gfm: true, // <-- enable GitHub Flavored Markdown (for tables)
+    highlight: function(code, lang) { 
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext'; 
+        return hljs.highlight(code, { language }).value; 
+    } 
+});
     
     bootUp();
 });

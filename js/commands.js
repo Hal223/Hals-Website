@@ -1,46 +1,79 @@
 // js/commands.js
 
+const COPY_ICON_SVG = `<svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" class="octicon octicon-copy">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>`;
+
+const CHECK_ICON_SVG = `<svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" class="octicon octicon-check">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>`;
+
+
 export const handleCat = async (args, context) => {
-    const { addToOutput, utils, state } = context;
+    const { addToOutput, utils, state, dom } = context;
     if (args.length === 0) {
-        addToOutput('cat: missing operand');
-        return;
+        addToOutput('cat: missing operand'); return;
     }
     const pathArg = args[0];
-    let file;
-    let fileName;
+    const finalPath = utils.resolvePath(pathArg, state.currentPath);
+    const item = utils.findItemByPath(finalPath.replace(/^~\/?/, ''), state.fileSystem);
+    const fileName = finalPath.split('/').pop();
 
-    if (pathArg.includes('/')) {
-        file = utils.findItemByPath(pathArg, state.fileSystem);
-        fileName = pathArg.split('/').pop();
-    } else {
-        const dir = utils.getCurrentDir(state.currentPath, state.fileSystem);
-        file = dir.children[pathArg];
-        fileName = pathArg;
+    if (!item) {
+        addToOutput(`cat: ${pathArg}: No such file or directory`); return;
+    }
+    if (item.type === 'directory') {
+        addToOutput(`cat: ${pathArg}: Is a directory`); return;
     }
 
-    if (file && file.type === 'file') {
-        try {
-            const response = await fetch(file.path);
-            if (!response.ok) throw new Error(`Network response was not ok`);
-            let content = await response.text();
+    try {
+        const response = await fetch(item.path);
+        if (!response.ok) throw new Error(`Network response was not ok`);
+        let content = await response.text();
 
-            if (fileName.endsWith('.md')) {
-                const processedContent = utils.preprocessObsidianSyntax(content);
-                addToOutput(`<div class="markdown-body">${marked.parse(processedContent)}</div>`);
-            } else if (fileName.endsWith('.json')) {
-                const formattedJson = JSON.stringify(JSON.parse(content), null, 2);
-                const highlightedJson = hljs.highlight(formattedJson, { language: 'json' }).value;
-                addToOutput(`<pre><code class="hljs json">${highlightedJson}</code></pre>`);
-            } else {
-                addToOutput(`<pre>${content}</pre>`);
-            }
-        } catch (error) {
-            console.error('Fetch error:', error);
-            addToOutput(`cat: ${fileName}: Error fetching file`);
+        if (fileName.endsWith('.md')) {
+            const rawHtml = marked.parse(content);
+            const finalHtml = utils.preprocessObsidianSyntax(rawHtml);
+
+            const wrapperDiv = document.createElement('div');
+            wrapperDiv.className = 'markdown-body';
+            wrapperDiv.innerHTML = finalHtml;
+
+            wrapperDiv.querySelectorAll('pre').forEach(preElement => {
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                // --- UPDATED: Use SVG icon instead of text ---
+                copyBtn.innerHTML = COPY_ICON_SVG;
+
+                copyBtn.addEventListener('click', () => {
+                    const codeToCopy = preElement.querySelector('code').innerText;
+                    navigator.clipboard.writeText(codeToCopy).then(() => {
+                        // --- UPDATED: Show checkmark icon on success ---
+                        copyBtn.innerHTML = CHECK_ICON_SVG;
+                        setTimeout(() => {
+                            copyBtn.innerHTML = COPY_ICON_SVG;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        copyBtn.innerText = 'Error'; // Fallback to text on error
+                    });
+                });
+
+                preElement.appendChild(copyBtn);
+            });
+            
+            dom.output.appendChild(wrapperDiv);
+
+        } else if (fileName.endsWith('.json')) {
+            const formattedJson = JSON.stringify(JSON.parse(content), null, 2);
+            const highlightedJson = hljs.highlight(formattedJson, { language: 'json' }).value;
+            addToOutput(`<pre><code class="hljs json">${highlightedJson}</code></pre>`);
+        } else {
+            addToOutput(`<pre>${content}</pre>`);
         }
-    } else {
-        addToOutput(`cat: ${pathArg}: No such file or directory`);
+    } catch (error) {
+        console.error('Fetch error:', error);
+        addToOutput(`cat: ${fileName}: Error fetching file`);
     }
 };
 
@@ -83,29 +116,21 @@ export const handleCd = (args, context) => {
     const { addToOutput, utils, state, updatePrompt } = context;
     const target = args[0] || '~';
 
-    // Check if the target directory is excluded
-    if (state.EXCLUDED_DIRS.includes(target)) {
-        addToOutput(`bash: cd: ${target}: Permission denied`);
-        return;
+    // --- UPDATED: Use the new path resolver ---
+    const finalPath = utils.resolvePath(target, state.currentPath);
+    const destination = utils.findItemByPath(finalPath.replace(/^~\/?/, ''), state.fileSystem);
+
+    if (destination && destination.type === 'directory') {
+        const firstSegment = target.split('/')[0];
+        if (state.EXCLUDED_DIRS.includes(firstSegment)) {
+            addToOutput(`bash: cd: ${firstSegment}: Permission denied`);
+            return;
+        }
+        state.currentPath = finalPath;
+    } else {
+        addToOutput(`cd: no such file or directory: ${args[0]}`);
     }
 
-    if (target === '~' || target === '') {
-        state.currentPath = '~';
-    } else if (target === '..') {
-        if (state.currentPath !== '~') {
-            const parts = state.currentPath.split('/');
-            parts.pop();
-            state.currentPath = parts.join('/') || '~';
-        }
-    } else {
-        const currentDir = utils.getCurrentDir(state.currentPath, state.fileSystem);
-        const newDir = currentDir.children[target];
-        if (newDir && newDir.type === 'directory') {
-            state.currentPath = state.currentPath === '~' ? `~/${target}` : `${state.currentPath}/${target}`;
-        } else {
-            addToOutput(`cd: no such file or directory: ${target}`);
-        }
-    }
     updatePrompt();
 };
 

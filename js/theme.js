@@ -3,8 +3,8 @@
 export const THEMES = {
     'default': { name: 'Portfolio Dark', class: '' },
     'noctis': { name: 'Noctis', class: 'theme-noctis' },
-    'gruvbox': { name: 'Gruvbox Material', class: 'theme-gruvbox' },
-    'vim-light': { name: 'Vim Light', class: 'theme-vim-light' },
+    'gruvbox': { name: 'Gruvbox ', class: 'theme-gruvbox' },
+    'vim-light': { name: 'Vim-Light', class: 'theme-vim-light' },
     'sweetlove': { name: 'Sweetlove', class: 'theme-sweetlove' },
 };
 
