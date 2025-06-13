@@ -26,6 +26,20 @@ One prominent example is overlay networking.
 
 Overlay networks create a virtual network on top of the existing physical network. This allows containers on different hosts to communicate with each other as if they were on the same local network, without needing complex configurations on the underlying infrastructure. Technologies like Docker Swarm's ingress network, Kubernetes' networking model (often implemented with CNI plugins like Calico, Flannel, or Weave Net), and service meshes (like Istio or Linkerd) build upon or provide these kinds of advanced, container-centric communication capabilities.
 
+![[container-overlay.png]]
+```bash
+docker network create -d overlay --attachable \
+  # optional to set overlay schema
+  --subnet=10.10.20.0/24 \
+  --gateway=10.10.20.1 \
+  --ip-range=10.10.20.128/25 \
+  # name of overlay
+  my-custom-overlay
+
+docker run -itd --name my-container --network my-custom-overlay busybox
+```
+
+
 These solutions address challenges such as:
 
 Service discovery: How containers find each other.

@@ -9,13 +9,25 @@
             "type": "file",
             "path": "blog/base_paradigms.md"
           },
+          "container-comunication.md": {
+            "type": "file",
+            "path": "blog/container-comunication.md"
+          },
           "how_this_site_was_built.md": {
             "type": "file",
             "path": "blog/how_this_site_was_built.md"
           },
+          "layers_of_abstraction.md": {
+            "type": "file",
+            "path": "blog/layers_of_abstraction.md"
+          },
           "linux_pass.md": {
             "type": "file",
             "path": "blog/linux_pass.md"
+          },
+          "paradox_of_public_speech.md": {
+            "type": "file",
+            "path": "blog/paradox_of_public_speech.md"
           },
           "securing_your_digital_self.md": {
             "type": "file",
@@ -24,6 +36,10 @@
           "status_games.md": {
             "type": "file",
             "path": "blog/status_games.md"
+          },
+          "synthesized_happiness.md": {
+            "type": "file",
+            "path": "blog/synthesized_happiness.md"
           },
           "taking_notes.md": {
             "type": "file",
@@ -50,10 +66,6 @@
             "type": "file",
             "path": "images/HP-41C_ad.png"
           },
-          "Holden_Prather_Resume.pdf": {
-            "type": "file",
-            "path": "images/Holden_Prather_Resume.pdf"
-          },
           "Me.jpg": {
             "type": "file",
             "path": "images/Me.jpg"
@@ -70,9 +82,38 @@
             "type": "file",
             "path": "images/biphasic.png"
           },
+          "container-overlay.png": {
+            "type": "file",
+            "path": "images/container-overlay.png"
+          },
+          "container-port-forwarding.png": {
+            "type": "file",
+            "path": "images/container-port-forwarding.png"
+          },
+          "drawio": {
+            "type": "directory",
+            "children": {
+              "container-overlay.drawio": {
+                "type": "file",
+                "path": "images/drawio/container-overlay.drawio"
+              },
+              "container-port-forwarding.drawio": {
+                "type": "file",
+                "path": "images/drawio/container-port-forwarding.drawio"
+              }
+            }
+          },
           "hanf.png": {
             "type": "file",
             "path": "images/hanf.png"
+          },
+          "holden_prather_resume.pdf": {
+            "type": "file",
+            "path": "images/holden_prather_resume.pdf"
+          },
+          "holden_prather_resume.pdf.old": {
+            "type": "file",
+            "path": "images/holden_prather_resume.pdf.old"
           }
         }
       },
