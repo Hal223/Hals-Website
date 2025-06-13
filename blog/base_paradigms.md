@@ -16,7 +16,6 @@
 - Out of the night that covers me, Black as the pit from pole to pole, I thank whatever gods may be For my unconquerable soul. In the fell clutch of circumstance I have not winced nor cried aloud. Under the bludgeonings of chance My head is bloody, but unbowed. Beyond this place of wrath and tears Looms but the Horror of the shade, And yet the menace of the years Finds and shall find me unafraid. it matters not how strait the gate, How charged with punishments the scroll, I am the master of my fate, I am the captain of my soul. [[invictus]]
 ## Civil Disobedience 
 - Under a government which imprisons any unjustly, the true place for a just man is also a prison [[walden]]
-  - asdasd
 - I know that if you hide, it doesn't go away. [[little_dark_age]]
 ## Serenity 
 - Grant me the serenity; to accept the things, I cannot change; Courage to change the things I can; And the wisdom to know the difference. Replicate the beauty you seen in the world. [[serenity_prayer]]

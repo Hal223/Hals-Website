@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             option.onclick = (e) => { e.preventDefault(); applyTheme(key, dom.themeDropdown); };
             dom.themeDropdown.appendChild(option);
         }
-        const savedTheme = localStorage.getItem('portfolio-theme') || 'default';
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'gruvbox';
         applyTheme(savedTheme, dom.themeDropdown);
 
         try {
