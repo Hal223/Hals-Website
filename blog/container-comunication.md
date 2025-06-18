@@ -1,4 +1,5 @@
 # How Containers Talk to the World
+`2025-06-13`
 
 Once a container is built, then comes the next crucial question: how does your container, isolated in its own environment, communicate with other services, databases, or even the outside world?
 

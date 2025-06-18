@@ -1,0 +1,41 @@
+/* css/responsive.css */
+
+/* Media queries for mobile and tablet devices */
+@media (max-width: 768px) {
+    /* Reduce padding on small screens to maximize space */
+    body {
+        padding: 5px;
+        min-height: -webkit-fill-available; /* Fix for 100vh on mobile browsers */
+    }
+
+    /* Make the terminal window take up the full screen */
+    #terminal-window {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: none;
+    }
+    
+    /* Slightly reduce font size for better readability on small screens */
+    body, #command-input {
+        font-size: 14px;
+    }
+
+    /* Adjust header for smaller screens */
+    #terminal-header {
+        padding: 6px 8px;
+    }
+    .header-title {
+        font-size: 0.8em;
+    }
+
+    /* Hide the decorative traffic light dots to save space */
+    .header-buttons {
+        display: none;
+    }
+
+    /* Adjust terminal padding */
+    #terminal {
+        padding: 5px;
+    }
+}

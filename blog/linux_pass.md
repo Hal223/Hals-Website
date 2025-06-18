@@ -1,5 +1,5 @@
 # Securing Your Secrets: A Look at the Linux pass Utility
-
+`2025-06-09`
 pass is a simple shell script that manages passwords by storing them in a directory structure, where each password resides in a GPG-encrypted file. The filename itself typically corresponds to the service or website the password is for, making it intuitive to navigate and manage your credentials using standard command-line utilities.
 
 ## Install

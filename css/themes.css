@@ -1,0 +1,75 @@
+/* css/themes.css */
+
+/* --- Default Theme: Portfolio Dark --- */
+:root {
+    --background: #1e1e1e;
+    --foreground: #d4d4d4;
+    --prompt-color: #569cd6;
+    --command-color: #ce9178;
+    --link-color: #4ec9b0;
+    --error-color: #f44747;
+    --border-color: #333;
+    --header-bg: #2d2d2d;
+    --highlight-bg: #3a3d41;
+    --h1-color: var(--prompt-color);
+    --h2-color: var(--command-color);
+    --h3-color: var(--link-color);
+}
+
+/* --- Theme Definitions --- */
+.theme-noctis {
+    --background: #0b1622;
+    --foreground: #d4dce2;
+    --prompt-color: #82aaff;
+    --command-color: #c792ea;
+    --link-color: #89ddff;
+    --error-color: #ff5370;
+    --border-color: #1a2430;
+    --header-bg: #1a2430;
+    --highlight-bg: #2c3a4a;
+    --h1-color: #c792ea;
+    --h2-color: #82aaff;
+    --h3-color: #89ddff;
+}
+.theme-gruvbox {
+    --background: #282828;
+    --foreground: #ebdbb2;
+    --prompt-color: #83a598;
+    --command-color: #d65d0e;
+    --link-color: #689d6a;
+    --error-color: #cc241d;
+    --border-color: #3c3836;
+    --header-bg: #3c3836;
+    --highlight-bg: #504945;
+    --h1-color: #d65d0e;
+    --h2-color: #689d6a;
+    --h3-color: #83a598;
+}
+.theme-vim-light {
+    --background: #fdf6e3;
+    --foreground: #657b83;
+    --prompt-color: #268bd2;
+    --command-color: #cb4b16;
+    --link-color: #859900;
+    --error-color: #dc322f;
+    --border-color: #eee8d5;
+    --header-bg: #eee8d5;
+    --highlight-bg: #e7e0cf;
+    --h1-color: #268bd2;
+    --h2-color: #cb4b16;
+    --h3-color: #859900;
+}
+.theme-sweetlove {
+    --background: #2a2d3a;
+    --foreground: #e0e0e0;
+    --prompt-color: #ff79c6;
+    --command-color: #ffb86c;
+    --link-color: #8be9fd;
+    --error-color: #ff5555;
+    --border-color: #3b3e4e;
+    --header-bg: #3b3e4e;
+    --highlight-bg: #4c5063;
+    --h1-color: #ff79c6;
+    --h2-color: #8be9fd;
+    --h3-color: #50fa7b;
+}

@@ -23,5 +23,7 @@ This dynamic reveals a few common strategies for ascending any social hierarchy:
 Many disingenuously focus on the second and third strategies. For example, a bodybuilder might eloquently argue for the paramount importance of fitness. While not untrue, the goal is often to shift your values, thereby elevating their own status and validating their life's pursuit.
 
 
-Related: [[paradigm]] #Begin with the end in mind
+Related:
+- [[paradigm]] #Begin with the end in mind
+- [[synthesized_happiness]]
 ![[Red_haze.jpg]]
