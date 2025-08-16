@@ -37,6 +37,10 @@
             "type": "file",
             "path": "blog/status_games.md"
           },
+          "steping_up_heading_out.md": {
+            "type": "file",
+            "path": "blog/steping_up_heading_out.md"
+          },
           "synthesized_happiness.md": {
             "type": "file",
             "path": "blog/synthesized_happiness.md"
@@ -44,6 +48,35 @@
           "taking_notes.md": {
             "type": "file",
             "path": "blog/taking_notes.md"
+          },
+          "talking_big_about_small.md": {
+            "type": "file",
+            "path": "blog/talking_big_about_small.md"
+          }
+        }
+      },
+      "css": {
+        "type": "directory",
+        "children": {
+          "content.css": {
+            "type": "file",
+            "path": "css/content.css"
+          },
+          "main.css": {
+            "type": "file",
+            "path": "css/main.css"
+          },
+          "responsive.css": {
+            "type": "file",
+            "path": "css/responsive.css"
+          },
+          "style.css.old": {
+            "type": "file",
+            "path": "css/style.css.old"
+          },
+          "themes.css": {
+            "type": "file",
+            "path": "css/themes.css"
           }
         }
       },
@@ -58,13 +91,13 @@
             "type": "file",
             "path": "images/Atlas_shrugged.png"
           },
-          "Copernicus.png": {
-            "type": "file",
-            "path": "images/Copernicus.png"
-          },
           "HP-41C_ad.png": {
             "type": "file",
             "path": "images/HP-41C_ad.png"
+          },
+          "Kipernicus.png": {
+            "type": "file",
+            "path": "images/Kipernicus.png"
           },
           "Me.jpg": {
             "type": "file",

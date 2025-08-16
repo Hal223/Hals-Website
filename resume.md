@@ -30,6 +30,17 @@ _March 2020 - October 2023_
 - **DNS Expertise & Load Balancing:** Administered a large-scale distributed DNS environment (RHEL, Infoblox) and implemented DNS Load balancing using F5 BIG-IP DNS. 
 - **Vulnerability Management:** Proactively reviewed and resolved CVEs to maintain network security. 
 
+**Technical Support** | West Kentucky and Tennessee Telecommunications (WK&T)
+_November 2018 - March 2020_
+
+- **Technical Support:** Provided expert technical support to customers via phone and onsite visits, resolving a wide range
+of issues related to phone, TV, and internet services.
+- **Technical Guidance & Troubleshooting:** Patiently guided customers through equipment installation and troubleshooting
+processes, ensuring they could successfully use their services.
+- **Dispatch & Logistics Optimization:** Efficiently coordinated and dispatched field technicians to onsite appointments,
+minimizing travel time and maximizing productivity.
+- **Computer Repair & Optimization:** Offered additional value to customers by providing computer repair services, including
+part replacement, virus removal, and performance optimizations.
 ### Certifications
 
 * **ACTIVELY PURSUING**: Offensive Security Certified Professional (OSCP) 

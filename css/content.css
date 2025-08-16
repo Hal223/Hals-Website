@@ -5,6 +5,11 @@
     white-space: pre-wrap;
     word-wrap: break-word;
 }
+#output pre,
+#output code {
+    white-space: pre-wrap; /* Tells the browser to wrap text, preserving whitespace */
+    word-break: break-all;   /* Aggressively breaks any long string to prevent overflow */
+}
 #output > * {
     margin: 0;
 }
