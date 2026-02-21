@@ -2,11 +2,11 @@
 `2024-08-06`
 
 ## password managers
-A password manager helps you create and store strong, unique passwords for all your online accounts. This eliminates the need to reuse passwords, which is a major security risk. I personal do not recommend using cloud based password managers but they are useful due to their convenience and integration with mobile devices.
+A password manager helps you create and store strong, unique passwords for all your online accounts. This eliminates the need to reuse passwords, which is a major security risk. I personally do not recommend using cloud based password managers but they are useful due to their convenience and integration with mobile devices.
 
 - [KeePass](https://keepass.info/download.html)
 - [KeePassXC](https://keepassxc.org/download/)
-- [pass](https://www.passwordstore.org/) I have setup note for [[linux_pass]]
+- [pass](https://www.passwordstore.org/) I have setup note for [[linux_pass.md]]
 - [bitwarden](https://bitwarden.com/)
 - [1password](https://1password.com/)
 - [lastpass](https://www.lastpass.com/)
@@ -14,7 +14,6 @@ A password manager helps you create and store strong, unique passwords for all y
 | Feature        | KeePass | KeePassXC | pass | Bitwarden | 1Password | LastPass |
 |----------------|---------|-----------|------|-----------|-----------|----------|
 | **Pros**       |         |           |      |           |           |          |
-| Open Source    | ✅      | ✅        | ✅   | ✅        | ❌        | ❌       |
 | Open Source    | ✅      | ✅        | ✅   | ✅        | ❌        | ❌       |
 | Security       | ✅      | ✅        | ✅   | ✅        | ✅        | ✅       |
 | Local Storage  | ✅      | ✅        | ✅   | ❌        | ✅        | ❌       |
@@ -133,7 +132,7 @@ Benefit: Allows you to regain access to your account if you forget your password
 
 ### Firefox Relay
 
-[Firefox Relay](https://relay.firefox.com/)'s primary function is to protect your real email address from being exposed online. It creates unique, randomly generated email aliases that you can use when signing up for websites, newsletters, or online services. Any emails sent to these aliases are forwarded to your actual inbox, keeping your real email address hidden. This means not only will you have a unique password for all your accounts but also a unique email/username for each account. Google has a very simular [+trick](https://www.streak.com/post/gmail-plus-addressing-trick) but does not have the same level of securing.
+[Firefox Relay](https://relay.firefox.com/)'s primary function is to protect your real email address from being exposed online. It creates unique, randomly generated email aliases that you can use when signing up for websites, newsletters, or online services. Any emails sent to these aliases are forwarded to your actual inbox, keeping your real email address hidden. This means not only will you have a unique password for all your accounts but also a unique email/username for each account. Google has a very similar [+trick](https://www.streak.com/post/gmail-plus-addressing-trick) but does not have the same level of security.
 
 - Reduced Spam: By using aliases, your real email address is less likely to be sold to spammers or end up on marketing lists.
 - Enhanced Privacy: Protects your identity by preventing websites from directly associating your online activities with your real email address.
@@ -188,4 +187,3 @@ Action: If your email was part of a breach, change the password for any accounts
 - https://haveibeenpwned.com/
 - https://npd.pentester.com/
 - https://www.npdbreach.com/
-

@@ -1,4 +1,4 @@
-Tags: #Proccess
+Tags: #Process
 # Taking notes
 `2025-03-25 `
 The true goal of note-taking isn't simply to accumulate notes, but to create a system that allows for quick and easy access to relevant information. It introduces a new note-taking strategy focused on capturing key concepts rather than transcribing everything verbatim. This approach saves time, promotes active learning, and improves information retention .The core idea is to facilitate memory and the creation of new connections, rather than simply hoarding data, suggesting a minimal initial structure that evolves organically, creating notes for every interesting concept and linking them over time. 
@@ -15,7 +15,7 @@ The true goal of note-taking isn't simply to accumulate notes, but to create a s
 - **Effective Organization**: Obsidian offers flexible organization methods using tags and properties, allowing you to categorize and query your notes effectively. It is recommended to avoid using folders for organization within Obsidian.
 ## Use AI
 
-Revolutionize note-taking by leveraging AIris to construct a dynamic, interconnected knowledge graph within Obsidian. Instead of passively transcribing information, users actively curate and synthesize knowledge. Google Gemini's deep research capabilities act as a powerful initial filter, generating a structured learning roadmap with key concepts and relevant resources. This roadmap then becomes the blueprint for an intelligent note-taking system. AI tools like Cursor automate the extraction and organization of knowledge points into individual note cards, while establishing robust backlinks for seamless navigation. The resulting Obsidian knowledge graph transcends traditional linear notes, offering a visually intuitive network where ideas connect and evolve, facilitating deeper understanding and accelerated learning.
+Revolutionize note-taking by leveraging AI to construct a dynamic, interconnected knowledge graph within Obsidian. Instead of passively transcribing information, users actively curate and synthesize knowledge. Google Gemini's deep research capabilities act as a powerful initial filter, generating a structured learning roadmap with key concepts and relevant resources. This roadmap then becomes the blueprint for an intelligent note-taking system. AI tools like Cursor automate the extraction and organization of knowledge points into individual note cards, while establishing robust backlinks for seamless navigation. The resulting Obsidian knowledge graph transcends traditional linear notes, offering a visually intuitive network where ideas connect and evolve, facilitating deeper understanding and accelerated learning.
 
 [[ccna_learning_example]]
 

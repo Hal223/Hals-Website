@@ -19,7 +19,7 @@ This shows an example of "Port Forwarding Containers"
 *Mentioning different Docker network drivers (like bridge, host, overlay) and how they relate to this communication, if you want to tie it back to the other notes you provided.*
 
 
-# Whats Gained in Compatility is lost in Features
+# What's Gained in Compatibility is lost in Features
 
 while repurposing Layer 4 port technology was a key initial step for compatibility, more specialized communication technologies have indeed emerged for containers, especially to handle complex scenarios like multi-host networking.
 
