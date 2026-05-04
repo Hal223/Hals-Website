@@ -1,13 +1,14 @@
-# Holden Prather
+<h1 style="text-align: center;">Holden Prather</h1>
 
-<span style="color: #eba74e">_Architect | Developer | Engineer_</span>
+<span style="color: #eba74e; display: block; text-align: center;"> _Architect | Developer | Engineer_ </span>
+
 ---
 
-### About Me
+### --About Me
 
 IT Engineering professional with 5 years of experience within the highly regulated financial industry.  A proven history of successfully designing, building & securing business critical assets and services within a complex hybrid environments. Life-long learner with a passion for technology and a drive to stay ahead of the curve. Currently pursuing the Offensive Security Certified Professional (OSCP) certification.
 
-### Work Experience
+### --Work Experience
 
 **Cyber Security Specialist** | Computer Services, Inc. (CSI)
 _October 2023 - April 2025_
@@ -41,16 +42,17 @@ processes, ensuring they could successfully use their services.
 minimizing travel time and maximizing productivity.
 - **Computer Repair & Optimization:** Offered additional value to customers by providing computer repair services, including
 part replacement, virus removal, and performance optimizations.
-### Certifications
+### --Certifications
 
 * **ACTIVELY PURSUING**: Offensive Security Certified Professional (OSCP) 
 * **2023**: Traffic Management Operating System (TMOS) 
 * **2020**: Microsoft Certified: Azure Fundamentals (AZ 900)
 * **2020**: Cisco Certified Network Associate (CCNA) 
 
-### Skills Summary
+### --Skills Summary
 
-**Vendor Specific**
+```bash
+Vendor Specific
 ├── Cisco Systems Products
 │   ├── Adaptive Security Appliance (ASA)
 │   ├── Advanced Malware Protection (AMP)
@@ -87,10 +89,11 @@ part replacement, virus removal, and performance optimizations.
 ├── ServiceNow ITIL
 ├── Splunk
 ├── Symantec Security
-└── Terraform by HashiCorp
+└── Terraform / OpenTofu
+```
 
-
-**Technical Skills**
+```bash
+Technical Skills
 ├── Governance
 │   ├── General Data Protection Regulation (GDPR)
 │   ├── Health Insurance Portability and Accountability Act (HIPAA)
@@ -126,5 +129,5 @@ part replacement, virus removal, and performance optimizations.
     ├── Powershell
     ├── Representational State Transfer (REST-API)
     └── HTML, CSS, JavaScript
-
+```
 [PDF FORMAT](https://hal223.neocities.org/images/holden_prather_resume.pdf)

@@ -1,0 +1,14 @@
+{
+  "name": "tmp-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node generate-manifest.js && vite",
+    "build": "node generate-manifest.js && vite build && cp -r blog css images *.md *.json dist/ 2>/dev/null || true",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}

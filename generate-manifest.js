@@ -1,16 +1,12 @@
 // generate-manifest.js
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 // Files and directories to ignore during the scan
 const ignoreList = [
     '.git',
     'node_modules',
-    'index.html',
-    'style.css',
-    'script.js',
-    'generate-manifest.js',
-    'file-manifest.json' // Don't include the manifest itself
+    'dist'
 ];
 
 function generateManifest(dir) {
@@ -22,7 +18,7 @@ function generateManifest(dir) {
     const files = fs.readdirSync(dir);
 
     for (const file of files) {
-        if (ignoreList.includes(file)) {
+        if (ignoreList.includes(file) || file.startsWith('.')) {
             continue;
         }
 
@@ -34,6 +30,7 @@ function generateManifest(dir) {
         } else {
             // We store the relative path for the fetch API
             const relativePath = path.relative('.', fullPath).replace(/\\/g, '/');
+            
             manifest.children[file] = {
                 type: 'file',
                 path: relativePath
@@ -44,7 +41,22 @@ function generateManifest(dir) {
 }
 
 const projectManifest = generateManifest('.');
-const manifestData = JSON.stringify({ '~': projectManifest }, null, 2);
+
+const rootChildren = {};
+const homeChildren = {};
+const publicFiles = ['blog', 'projects.md', 'resume.md', 'welcome.md', 'images'];
+
+for (const key in projectManifest.children) {
+    if (publicFiles.includes(key)) {
+        homeChildren[key] = projectManifest.children[key];
+    }
+    rootChildren[key] = projectManifest.children[key];
+}
+
+const manifestData = JSON.stringify({ 
+    '/': { type: 'directory', children: rootChildren },
+    '~': { type: 'directory', children: homeChildren } 
+}, null, 2);
 
 fs.writeFileSync('file-manifest.json', manifestData);
 

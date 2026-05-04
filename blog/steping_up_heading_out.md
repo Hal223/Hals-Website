@@ -1,5 +1,7 @@
+
 # The Quiet Gap of Leadership
 `2025-08-15`
+![[hurting.jpg]]
 
 There is a quiet truth that travels through every family and community: anything worth having is worth having. When the promise of something good sits in our hands, we feel compelled to guard it, to nurture it, and to make sure it does not slip away.
 

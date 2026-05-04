@@ -1,3 +1,4 @@
+
 # How Containers Talk to the World
 `2025-06-13`
 
@@ -8,6 +9,8 @@ When containers first emerged, developers faced a fork in the road. One path led
 To maximize compatibility and leverage familiar concepts, the decision was made to adapt existing Layer 4 (Transport Layer) port technology. This means containers can use the same port-based communication mechanisms that traditional applications and servers have relied on for decades. By mapping ports on the host machine to ports within the container, we enable seamless communication, effectively "bridging the gap" between the isolated container and the broader network. This approach simplified adoption and allowed developers to quickly integrate containerized applications into their existing infrastructure without refactoring
 
 ![[container-port-forwarding.png]]
+
+
 ```bash
 docker run -d -p 8080:80 --name my-web-server nginx
 docker run -d -p 8081:80 Example/redis

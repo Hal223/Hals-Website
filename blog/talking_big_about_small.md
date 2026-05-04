@@ -1,5 +1,6 @@
 # Small Talk Connects, Big Talk Divides 
 `2025-08-15`
+![[3590009.jpg]]
 
 “Minimalism is a scam created by Big Small to sell more less.”
 

@@ -1,5 +1,7 @@
 # Paradox of Public Speech
 `2025-06-09`
+![[cyber-fk.jpg]]
+
 Found myself drawn into reflections on speech—both public and private, the ways we communicate, and the underlying desires driving our words. This introspection is not mere idle speculation but a lens through which I observe the complexities of modern society. Recently, during a fruitful dialogue with a companion, these themes emerged organically, leading me to ponder deeper questions about communication, companionship, and the fabric of our collective consciousness.
 
 ## The Double-Talk of Speach

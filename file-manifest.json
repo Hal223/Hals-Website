@@ -1,7 +1,15 @@
 {
-  "~": {
+  "/": {
     "type": "directory",
     "children": {
+      "README.md": {
+        "type": "file",
+        "path": "README.md"
+      },
+      "a-testing-example.md": {
+        "type": "file",
+        "path": "a-testing-example.md"
+      },
       "blog": {
         "type": "directory",
         "children": {
@@ -62,27 +70,43 @@
             "type": "file",
             "path": "css/content.css"
           },
-          "main.css": {
-            "type": "file",
-            "path": "css/main.css"
-          },
           "responsive.css": {
             "type": "file",
             "path": "css/responsive.css"
           },
-          "style.css.old": {
+          "terminal.css": {
             "type": "file",
-            "path": "css/style.css.old"
+            "path": "css/terminal.css"
           },
           "themes.css": {
             "type": "file",
             "path": "css/themes.css"
+          },
+          "traditional.css": {
+            "type": "file",
+            "path": "css/traditional.css"
           }
         }
+      },
+      "file-manifest.json": {
+        "type": "file",
+        "path": "file-manifest.json"
+      },
+      "generate-manifest.js": {
+        "type": "file",
+        "path": "generate-manifest.js"
       },
       "images": {
         "type": "directory",
         "children": {
+          "2001.jpg": {
+            "type": "file",
+            "path": "images/2001.jpg"
+          },
+          "3590009.jpg": {
+            "type": "file",
+            "path": "images/3590009.jpg"
+          },
           "An_allegory_of_victory.jpeg": {
             "type": "file",
             "path": "images/An_allegory_of_victory.jpeg"
@@ -98,6 +122,10 @@
           "Kipernicus.png": {
             "type": "file",
             "path": "images/Kipernicus.png"
+          },
+          "Kleine-Welten-III.png": {
+            "type": "file",
+            "path": "images/Kleine-Welten-III.png"
           },
           "Me.jpg": {
             "type": "file",
@@ -115,6 +143,10 @@
             "type": "file",
             "path": "images/biphasic.png"
           },
+          "cap6.png": {
+            "type": "file",
+            "path": "images/cap6.png"
+          },
           "container-overlay.png": {
             "type": "file",
             "path": "images/container-overlay.png"
@@ -123,32 +155,47 @@
             "type": "file",
             "path": "images/container-port-forwarding.png"
           },
-          "drawio": {
-            "type": "directory",
-            "children": {
-              "container-overlay.drawio": {
-                "type": "file",
-                "path": "images/drawio/container-overlay.drawio"
-              },
-              "container-port-forwarding.drawio": {
-                "type": "file",
-                "path": "images/drawio/container-port-forwarding.drawio"
-              }
-            }
+          "cyber-fk.jpg": {
+            "type": "file",
+            "path": "images/cyber-fk.jpg"
+          },
+          "esc.jpg": {
+            "type": "file",
+            "path": "images/esc.jpg"
+          },
+          "gondola_juice.png": {
+            "type": "file",
+            "path": "images/gondola_juice.png"
           },
           "hanf.png": {
             "type": "file",
             "path": "images/hanf.png"
           },
-          "holden_prather_resume.pdf": {
+          "holden_prather_resume_bland.pdf": {
             "type": "file",
-            "path": "images/holden_prather_resume.pdf"
+            "path": "images/holden_prather_resume_bland.pdf"
           },
-          "holden_prather_resume.pdf.old": {
+          "holden_prather_resume_styled.pdf": {
             "type": "file",
-            "path": "images/holden_prather_resume.pdf.old"
+            "path": "images/holden_prather_resume_styled.pdf"
+          },
+          "hurting.jpg": {
+            "type": "file",
+            "path": "images/hurting.jpg"
+          },
+          "narcosynthesis.jpg": {
+            "type": "file",
+            "path": "images/narcosynthesis.jpg"
+          },
+          "rymlingen.jpg": {
+            "type": "file",
+            "path": "images/rymlingen.jpg"
           }
         }
+      },
+      "index.html": {
+        "type": "file",
+        "path": "index.html"
       },
       "js": {
         "type": "directory",
@@ -165,6 +212,10 @@
             "type": "file",
             "path": "js/main.js"
           },
+          "script.js": {
+            "type": "file",
+            "path": "js/script.js"
+          },
           "theme.js": {
             "type": "file",
             "path": "js/theme.js"
@@ -172,6 +223,241 @@
           "utils.js": {
             "type": "file",
             "path": "js/utils.js"
+          }
+        }
+      },
+      "package-lock.json": {
+        "type": "file",
+        "path": "package-lock.json"
+      },
+      "package.json": {
+        "type": "file",
+        "path": "package.json"
+      },
+      "projects.md": {
+        "type": "file",
+        "path": "projects.md"
+      },
+      "resume.md": {
+        "type": "file",
+        "path": "resume.md"
+      },
+      "tmp-app-aaaaaa.zip": {
+        "type": "directory",
+        "children": {
+          "index.html": {
+            "type": "file",
+            "path": "tmp-app-aaaaaa.zip/index.html"
+          },
+          "package.json": {
+            "type": "file",
+            "path": "tmp-app-aaaaaa.zip/package.json"
+          },
+          "public": {
+            "type": "directory",
+            "children": {
+              "favicon.svg": {
+                "type": "file",
+                "path": "tmp-app-aaaaaa.zip/public/favicon.svg"
+              },
+              "icons.svg": {
+                "type": "file",
+                "path": "tmp-app-aaaaaa.zip/public/icons.svg"
+              }
+            }
+          },
+          "src": {
+            "type": "directory",
+            "children": {
+              "assets": {
+                "type": "directory",
+                "children": {
+                  "hero.png": {
+                    "type": "file",
+                    "path": "tmp-app-aaaaaa.zip/src/assets/hero.png"
+                  },
+                  "javascript.svg": {
+                    "type": "file",
+                    "path": "tmp-app-aaaaaa.zip/src/assets/javascript.svg"
+                  },
+                  "vite.svg": {
+                    "type": "file",
+                    "path": "tmp-app-aaaaaa.zip/src/assets/vite.svg"
+                  }
+                }
+              },
+              "counter.js": {
+                "type": "file",
+                "path": "tmp-app-aaaaaa.zip/src/counter.js"
+              },
+              "main.js": {
+                "type": "file",
+                "path": "tmp-app-aaaaaa.zip/src/main.js"
+              },
+              "style.css": {
+                "type": "file",
+                "path": "tmp-app-aaaaaa.zip/src/style.css"
+              }
+            }
+          }
+        }
+      },
+      "welcome.md": {
+        "type": "file",
+        "path": "welcome.md"
+      }
+    }
+  },
+  "~": {
+    "type": "directory",
+    "children": {
+      "blog": {
+        "type": "directory",
+        "children": {
+          "base_paradigms.md": {
+            "type": "file",
+            "path": "blog/base_paradigms.md"
+          },
+          "container-comunication.md": {
+            "type": "file",
+            "path": "blog/container-comunication.md"
+          },
+          "how_this_site_was_built.md": {
+            "type": "file",
+            "path": "blog/how_this_site_was_built.md"
+          },
+          "layers_of_abstraction.md": {
+            "type": "file",
+            "path": "blog/layers_of_abstraction.md"
+          },
+          "linux_pass.md": {
+            "type": "file",
+            "path": "blog/linux_pass.md"
+          },
+          "paradox_of_public_speech.md": {
+            "type": "file",
+            "path": "blog/paradox_of_public_speech.md"
+          },
+          "securing_your_digital_self.md": {
+            "type": "file",
+            "path": "blog/securing_your_digital_self.md"
+          },
+          "status_games.md": {
+            "type": "file",
+            "path": "blog/status_games.md"
+          },
+          "steping_up_heading_out.md": {
+            "type": "file",
+            "path": "blog/steping_up_heading_out.md"
+          },
+          "synthesized_happiness.md": {
+            "type": "file",
+            "path": "blog/synthesized_happiness.md"
+          },
+          "taking_notes.md": {
+            "type": "file",
+            "path": "blog/taking_notes.md"
+          },
+          "talking_big_about_small.md": {
+            "type": "file",
+            "path": "blog/talking_big_about_small.md"
+          }
+        }
+      },
+      "images": {
+        "type": "directory",
+        "children": {
+          "2001.jpg": {
+            "type": "file",
+            "path": "images/2001.jpg"
+          },
+          "3590009.jpg": {
+            "type": "file",
+            "path": "images/3590009.jpg"
+          },
+          "An_allegory_of_victory.jpeg": {
+            "type": "file",
+            "path": "images/An_allegory_of_victory.jpeg"
+          },
+          "Atlas_shrugged.png": {
+            "type": "file",
+            "path": "images/Atlas_shrugged.png"
+          },
+          "HP-41C_ad.png": {
+            "type": "file",
+            "path": "images/HP-41C_ad.png"
+          },
+          "Kipernicus.png": {
+            "type": "file",
+            "path": "images/Kipernicus.png"
+          },
+          "Kleine-Welten-III.png": {
+            "type": "file",
+            "path": "images/Kleine-Welten-III.png"
+          },
+          "Me.jpg": {
+            "type": "file",
+            "path": "images/Me.jpg"
+          },
+          "On_the_way_to_exile.jpg": {
+            "type": "file",
+            "path": "images/On_the_way_to_exile.jpg"
+          },
+          "Red_haze.jpg": {
+            "type": "file",
+            "path": "images/Red_haze.jpg"
+          },
+          "biphasic.png": {
+            "type": "file",
+            "path": "images/biphasic.png"
+          },
+          "cap6.png": {
+            "type": "file",
+            "path": "images/cap6.png"
+          },
+          "container-overlay.png": {
+            "type": "file",
+            "path": "images/container-overlay.png"
+          },
+          "container-port-forwarding.png": {
+            "type": "file",
+            "path": "images/container-port-forwarding.png"
+          },
+          "cyber-fk.jpg": {
+            "type": "file",
+            "path": "images/cyber-fk.jpg"
+          },
+          "esc.jpg": {
+            "type": "file",
+            "path": "images/esc.jpg"
+          },
+          "gondola_juice.png": {
+            "type": "file",
+            "path": "images/gondola_juice.png"
+          },
+          "hanf.png": {
+            "type": "file",
+            "path": "images/hanf.png"
+          },
+          "holden_prather_resume_bland.pdf": {
+            "type": "file",
+            "path": "images/holden_prather_resume_bland.pdf"
+          },
+          "holden_prather_resume_styled.pdf": {
+            "type": "file",
+            "path": "images/holden_prather_resume_styled.pdf"
+          },
+          "hurting.jpg": {
+            "type": "file",
+            "path": "images/hurting.jpg"
+          },
+          "narcosynthesis.jpg": {
+            "type": "file",
+            "path": "images/narcosynthesis.jpg"
+          },
+          "rymlingen.jpg": {
+            "type": "file",
+            "path": "images/rymlingen.jpg"
           }
         }
       },

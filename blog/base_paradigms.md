@@ -1,5 +1,6 @@
 # Base Paradigms 
 `2024-01-26`
+![[Atlas_shrugged.png|200]]
 
 ## Begin with the end in mind
 - Begin with the end in mind: It's incredibly easy to get caught up in an activity trap, in the busyness of life, to work harder and harder at climbing the ladder of success only to discover it's leaning against the wrong wall.
@@ -39,4 +40,3 @@
 - "If it doesn't Speak to your head heart and your loins, leave it for someone else"
 [[eric_chris_2]]
 
-![[hanf.png]]

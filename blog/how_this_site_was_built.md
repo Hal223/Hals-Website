@@ -1,5 +1,10 @@
 # How This Site Was Built
 `2025-06-07`
+![[gondola_juice.png]]
+
+
+**Need to update this as the site has changed**
+
 This portfolio isn't a standard webpage; it's an interactive terminal emulator built from the ground up with vanilla JavaScript, HTML, and CSS. The goal was to create something that reflects a developer's environment while still being accessible and functional.
 
 This document highlights some of the most interesting technical challenges and solutions involved in its creation.

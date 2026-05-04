@@ -1,5 +1,8 @@
+
 # Forging Happiness in the Crucible of the Mind
 `2025-06-14`
+
+![[esc.jpg]]
 
 <iframe width="798" height="599" src="https://www.youtube.com/embed/4q1dgn_C0AU" title="The surprising science of happiness | Dan Gilbert" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
