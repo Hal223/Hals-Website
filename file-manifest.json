@@ -41,6 +41,10 @@
             "type": "file",
             "path": "blog/securing_your_digital_self.md"
           },
+          "softborg.md": {
+            "type": "file",
+            "path": "blog/softborg.md"
+          },
           "status_games.md": {
             "type": "file",
             "path": "blog/status_games.md"
@@ -60,6 +64,19 @@
           "talking_big_about_small.md": {
             "type": "file",
             "path": "blog/talking_big_about_small.md"
+          }
+        }
+      },
+      "canvas": {
+        "type": "directory",
+        "children": {
+          "saved_videos_site.canvas": {
+            "type": "file",
+            "path": "canvas/saved_videos_site.canvas"
+          },
+          "saved_videos_site.html": {
+            "type": "file",
+            "path": "canvas/saved_videos_site.html"
           }
         }
       },
@@ -159,6 +176,14 @@
             "type": "file",
             "path": "images/cyber-fk.jpg"
           },
+          "deux-ex-moon.png": {
+            "type": "file",
+            "path": "images/deux-ex-moon.png"
+          },
+          "dread.jpg": {
+            "type": "file",
+            "path": "images/dread.jpg"
+          },
           "esc.jpg": {
             "type": "file",
             "path": "images/esc.jpg"
@@ -212,6 +237,10 @@
             "type": "file",
             "path": "js/main.js"
           },
+          "render-canvases.js": {
+            "type": "file",
+            "path": "js/render-canvases.js"
+          },
           "script.js": {
             "type": "file",
             "path": "js/script.js"
@@ -241,66 +270,6 @@
       "resume.md": {
         "type": "file",
         "path": "resume.md"
-      },
-      "tmp-app-aaaaaa.zip": {
-        "type": "directory",
-        "children": {
-          "index.html": {
-            "type": "file",
-            "path": "tmp-app-aaaaaa.zip/index.html"
-          },
-          "package.json": {
-            "type": "file",
-            "path": "tmp-app-aaaaaa.zip/package.json"
-          },
-          "public": {
-            "type": "directory",
-            "children": {
-              "favicon.svg": {
-                "type": "file",
-                "path": "tmp-app-aaaaaa.zip/public/favicon.svg"
-              },
-              "icons.svg": {
-                "type": "file",
-                "path": "tmp-app-aaaaaa.zip/public/icons.svg"
-              }
-            }
-          },
-          "src": {
-            "type": "directory",
-            "children": {
-              "assets": {
-                "type": "directory",
-                "children": {
-                  "hero.png": {
-                    "type": "file",
-                    "path": "tmp-app-aaaaaa.zip/src/assets/hero.png"
-                  },
-                  "javascript.svg": {
-                    "type": "file",
-                    "path": "tmp-app-aaaaaa.zip/src/assets/javascript.svg"
-                  },
-                  "vite.svg": {
-                    "type": "file",
-                    "path": "tmp-app-aaaaaa.zip/src/assets/vite.svg"
-                  }
-                }
-              },
-              "counter.js": {
-                "type": "file",
-                "path": "tmp-app-aaaaaa.zip/src/counter.js"
-              },
-              "main.js": {
-                "type": "file",
-                "path": "tmp-app-aaaaaa.zip/src/main.js"
-              },
-              "style.css": {
-                "type": "file",
-                "path": "tmp-app-aaaaaa.zip/src/style.css"
-              }
-            }
-          }
-        }
       },
       "welcome.md": {
         "type": "file",
@@ -342,6 +311,10 @@
             "type": "file",
             "path": "blog/securing_your_digital_self.md"
           },
+          "softborg.md": {
+            "type": "file",
+            "path": "blog/softborg.md"
+          },
           "status_games.md": {
             "type": "file",
             "path": "blog/status_games.md"
@@ -361,6 +334,19 @@
           "talking_big_about_small.md": {
             "type": "file",
             "path": "blog/talking_big_about_small.md"
+          }
+        }
+      },
+      "canvas": {
+        "type": "directory",
+        "children": {
+          "saved_videos_site.canvas": {
+            "type": "file",
+            "path": "canvas/saved_videos_site.canvas"
+          },
+          "saved_videos_site.html": {
+            "type": "file",
+            "path": "canvas/saved_videos_site.html"
           }
         }
       },
@@ -426,6 +412,14 @@
           "cyber-fk.jpg": {
             "type": "file",
             "path": "images/cyber-fk.jpg"
+          },
+          "deux-ex-moon.png": {
+            "type": "file",
+            "path": "images/deux-ex-moon.png"
+          },
+          "dread.jpg": {
+            "type": "file",
+            "path": "images/dread.jpg"
           },
           "esc.jpg": {
             "type": "file",

@@ -1,6 +1,7 @@
 // generate-manifest.js
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 
 // Files and directories to ignore during the scan
 const ignoreList = [
@@ -8,6 +9,13 @@ const ignoreList = [
     'node_modules',
     'dist'
 ];
+
+console.log('Rendering canvases...');
+try {
+    execSync('node js/render-canvases.js', { stdio: 'inherit' });
+} catch (error) {
+    console.error('Failed to render canvases:', error.message);
+}
 
 function generateManifest(dir) {
     const manifest = {
@@ -44,7 +52,7 @@ const projectManifest = generateManifest('.');
 
 const rootChildren = {};
 const homeChildren = {};
-const publicFiles = ['blog', 'projects.md', 'resume.md', 'welcome.md', 'images'];
+const publicFiles = ['blog', 'projects.md', 'resume.md', 'welcome.md', 'images', 'canvas'];
 
 for (const key in projectManifest.children) {
     if (publicFiles.includes(key)) {

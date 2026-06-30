@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas View</title>
+    <link rel="stylesheet" href="../css/themes.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <style>
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        #viewport {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: grab;
+        }
+        #viewport:active {
+            cursor: grabbing;
+        }
+        .canvas-container {
+            position: absolute;
+            width: 4970px;
+            height: 3612px;
+            transform-origin: 0 0;
+            background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .node {
+            position: absolute;
+            background-color: var(--header-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            border: 1px solid var(--border-color);
+        }
+        .node-content {
+            padding: 12px;
+            overflow: auto;
+            flex-grow: 1;
+            font-size: 14px;
+            word-wrap: break-word;
+            scrollbar-width: thin;
+        }
+        .text-node {
+            padding: 12px;
+        }
+        .file-node {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        .link-node {
+            display: flex;
+            align-items: center;
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        marker polygon {
+            fill: var(--foreground);
+        }
+    </style>
+</head>
+<body>
+    <div id="viewport">
+        <div class="canvas-container" id="canvas-container">
+            <svg>
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" />
+                    </marker>
+                </defs>
+                <path d="M 2509 785 C 2509 835, 2594 1097, 2644 1097" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2509 785 C 2509 835, 2364 1097, 2314 1097" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2509 697 C 2509 647, 2364 377, 2314 377" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2509 697 C 2509 647, 2594 388.5, 2644 388.5" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 820 2220 C 770 2220, 790 2220, 740 2220" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 1251 1594.5 C 1301 1594.5, 1340 1594, 1390 1594" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 627 628 C 627 578, 420 510, 420 460" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 520 3125 C 520 3075, 523 3004, 523 2954" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 627 1277 C 627 1327, 420 1426, 420 1476" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2239.5 1756 C 2239.5 1806, 1834 1985, 1834 2035" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2239.5 1756 C 2239.5 1806, 2617 1985, 2617 2035" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 2815.5 1756 C 2815.5 1806, 2617 1985, 2617 2035" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/><path d="M 3014 1684.5 C 3064 1684.5, 3104 1684.5, 3154 1684.5" fill="none" stroke="var(--foreground)" stroke-width="2" marker-end="url(#arrowhead)"/>
+            </svg>
+            
+            <div class="node" id="a24e56287415d642" style="left: 2374px; top: 697px; width: 270px; height: 88px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">##  Speech </textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="27914c1b21fa9c7c" style="left: 1020px; top: 3412px; width: 0px; height: 0px; border-top: 4px solid var(--link-color);">
+                <div class="node-content file-node">📄 hqdefault.webp</div>
+            </div>
+        
+            <div class="node" id="aad4319de52a4996" style="left: 2644px; top: 917px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/0bi1PvXCbr8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="f81290d67b7c6355" style="left: 1674px; top: 917px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/a7q_vACVwq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="3a43228f0659d6fe" style="left: 2644px; top: 197px; width: 640px; height: 383px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/4FoLdX8xeSo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="b1f8417dd94eb7b4" style="left: 1674px; top: 197px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/4Tth7BSQgt8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="0da8fcc1c9ecff36" style="left: 100px; top: 100px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/BtOgZeA8YGI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="7f1908693d4ba5fb" style="left: 100px; top: 628px; width: 1054px; height: 649px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">## Thoughts 
+Hard times create strong men, strong men create good times, good times create weak men, and weak men create hard times.
+
+- Morality is defined by what is sustainable, repeatable.
+- Nature creates, defines, and restricts whats is sustainable.
+- Nature defines what actions will get you killed and what actions will perpetuate you. Nature molds morality.
+- Civilization creates a barrier between you and nature, as this barrier grows the separation between you and the consequences of your actions grow. Being moral becomes less and less of a factor to your success, and more frequently in the case of morality, your punishment. This therefor reduces the importance of morality. 
+- This leads to a lack of morality no single agreed upon set of Values, a nothing matters or ever opinion is equal belief structure.
+- “And that is not all: even if man really were nothing but a piano-key, even if this were proved to him by natural science and mathematics, even then he would not become reasonable, but would purposely do something perverse out of simple ingratitude, simply to gain his point. And if he does not find means he will contrive destruction and chaos, will contrive sufferings of all sorts, only to gain his point! He will launch a curse upon the world, and as only man can curse (it is his privilege, the primary distinction between him and other animals), may be by his curse alone he will attain his object--that is, convince himself that he is a man and not a piano-key! If you say that all this, too, can be calculated and tabulated--chaos and darkness and curses, so that the mere possibility of calculating it all beforehand would stop it all, and reason would reassert itself, then man would purposely go mad in order to be rid of reason and gain his point!”  - Fyodor Dostoyevsky, Notes from Underground
+</textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="40c7aaf215c5b840" style="left: 100px; top: 1476px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/NgGLFozNM2o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="43ddc0c74e7842e3" style="left: 100px; top: 2046px; width: 640px; height: 348px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZAaY0gbis4s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="6a295b17109040b5" style="left: 820px; top: 2090px; width: 530px; height: 260px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">accidents sometimes can be very good for somebody in the sense that Joshua think made me a much much better person. I realized that on that day that I learned this about his condition i thought the most important thing is living and life and it doesn't matter whether he goes to Cambridge or not and it doesn't matter whether he can speak a few languages and or any of that.</textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="062485dce2101d5b" style="left: 203px; top: 2594px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/-BLAUhBl0nA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="2fafc34cccd0484c" style="left: 100px; top: 3125px; width: 840px; height: 240px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">"Before I was shot, I always thought that I was more half-there than all-there 
+— I always suspected that I was watching TV instead of living life. People
+sometimes say that the way things happen in movies is unreal, but actually
+it's the way things happen in life that's unreal. The movies make emotions
+look so strong and real, whereas when things really do happen to you, it's like
+watching television — you don't feel anything. Right when I was being shot
+and ever since, I knew that I was watching television. The channels switch,
+but it's all television." - Andy Warhol </textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="741b41544c2c122b" style="left: 1390px; top: 1414px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/tSkz4vATkQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="d8a18cffd3b07759" style="left: 790px; top: 1427px; width: 461px; height: 335px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">I Come to this video now and again.
+There is so many lessons to learn from our everyday experience I only hope that I may increse my awareness and strengthen my memory</textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="7f20df46e243aa43" style="left: 1130px; top: 2572px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/eKl6WjfDqYA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="7461017859b85716" style="left: 1130px; top: 2995px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/-pEhC3345JE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="11e3a2ed30cad4b3" style="left: 1895px; top: 2566px; width: 640px; height: 366px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/-gGLvg0n-uY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="95a72923d51fa338" style="left: 1895px; top: 2995px; width: 640px; height: 370px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/ORHB9c8e7ok" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="65198858c9cdbf68" style="left: 3658px; top: 377px; width: 0px; height: 0px; border-top: 4px solid var(--link-color);">
+                <div class="node-content file-node">📄 hqdefault 1.webp</div>
+            </div>
+        
+            <div class="node" id="7d9f9e323c0c66f7" style="left: 3434px; top: 197px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/tL47-RIyj8E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="b1869b06c7f96dce" style="left: 4130px; top: 605px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/ej7CRAIGXow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="7f7e881f3a599406" style="left: 4130px; top: 1031px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/MqhmM1TIymg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="9143341eb3990ecf" style="left: 4130px; top: 197px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/yYAw79386WI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="62adf5994825c0f6" style="left: 3434px; top: 605px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/BH_gncP_5vc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="83691fbea40386cf" style="left: 3154px; top: 1519px; width: 640px; height: 331px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/o0Bi-q89j5Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="800f5b2b6d32875d" style="left: 2297px; top: 2035px; width: 640px; height: 360px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/o2nG7-eXxko" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="b46be49cce2e09d3" style="left: 1514px; top: 2035px; width: 640px; height: 350px; border-top: 4px solid var(--command-color);">
+                <div class="node-content link-node" style="padding:0; overflow:hidden;"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/JLb5hZLw44s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            </div>
+        
+            <div class="node" id="8a4666ac80f43a4e" style="left: 2617px; top: 1613px; width: 397px; height: 143px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">## Lex_Fridman
+The most compationate man I know of</textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+            <div class="node" id="7247bf483be0cd3e" style="left: 2074px; top: 1613px; width: 331px; height: 143px; border-top: 4px solid var(--prompt-color);">
+                <div class="node-content text-node markdown-body">
+                <textarea class="raw-markdown" style="display:none;">## Eric_Weinstein
+The Smartest man I know of</textarea>
+                <div class="rendered-markdown"></div>
+            </div>
+            </div>
+        
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script type="module">
+        import { preprocessObsidianSyntax } from '../js/utils.js';
+
+        // Setup Markdown rendering
+        marked.setOptions({
+            gfm: true,
+            breaks: true,
+            highlight: function (code, lang) {
+                const language = hljs.getLanguage(lang) ? lang : "plaintext";
+                try {
+                    return hljs.highlight(code, { language }).value;
+                } catch (e) {
+                    return code;
+                }
+            },
+            langPrefix: 'hljs language-'
+        });
+
+        document.querySelectorAll('.text-node').forEach(node => {
+            const rawEl = node.querySelector('.raw-markdown');
+            const targetEl = node.querySelector('.rendered-markdown');
+            if (rawEl && targetEl) {
+                const rawText = rawEl.value;
+                // Strip YAML frontmatter
+                let markdownContent = rawText.replace(/^---\s*\n[\s\S]*?\n---\s*?\n?/, "");
+                
+                let rawHtml = marked.parse(markdownContent);
+                rawHtml = rawHtml.replace(/<table>/g, '<div class="table-wrapper"><table>');
+                rawHtml = rawHtml.replace(/<\/table>/g, '</table></div>');
+                
+                const finalHtml = preprocessObsidianSyntax(rawHtml);
+                targetEl.innerHTML = finalHtml;
+            }
+        });
+
+        // Sync theme with parent window
+        function syncTheme() {
+            try {
+                if (window.parent !== window && window.parent.document.body.className) {
+                    document.body.className = window.parent.document.body.className;
+                } else if (!document.body.className) {
+                    document.body.className = 'theme-primary-dark';
+                }
+            } catch(e) {}
+        }
+        syncTheme();
+        
+        try {
+            if (window.parent !== window) {
+                const observer = new MutationObserver(syncTheme);
+                observer.observe(window.parent.document.body, { attributes: true, attributeFilter: ['class'] });
+            }
+        } catch(e) {}
+
+        // Pan and Zoom logic
+        const viewport = document.getElementById('viewport');
+        const container = document.getElementById('canvas-container');
+        const iframes = document.querySelectorAll('iframe');
+        
+        let scale = 0.5;
+        let translateX = (viewport.clientWidth - 4970 * scale) / 2;
+        let translateY = (viewport.clientHeight - 3612 * scale) / 2;
+        
+        let isDragging = false;
+        let startX, startY;
+
+        function updateTransform() {
+            container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        }
+
+        viewport.addEventListener('mousedown', (e) => {
+            if (e.target.closest('.text-node')) return; // allow selecting text
+            isDragging = true;
+            startX = e.clientX - translateX;
+            startY = e.clientY - translateY;
+            iframes.forEach(f => f.style.pointerEvents = 'none');
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            updateTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+            iframes.forEach(f => f.style.pointerEvents = 'auto');
+        });
+
+        viewport.addEventListener('wheel', (e) => {
+            const textNode = e.target.closest('.text-node');
+            if (textNode && textNode.scrollHeight > textNode.clientHeight) {
+                // Let the node scroll normally
+                return; 
+            }
+            e.preventDefault();
+            
+            const zoomSensitivity = 0.001;
+            const delta = -e.deltaY * zoomSensitivity;
+            const newScale = Math.min(Math.max(0.05, scale * Math.exp(delta)), 5);
+            
+            const rect = viewport.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            translateX = mouseX - (mouseX - translateX) * (newScale / scale);
+            translateY = mouseY - (mouseY - translateY) * (newScale / scale);
+            
+            scale = newScale;
+            updateTransform();
+        }, { passive: false });
+
+        updateTransform();
+    </script>
+</body>
+</html>

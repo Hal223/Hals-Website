@@ -14,3 +14,8 @@ Use the navigation menu above to see my [[resume.md]] or check out my latest [[p
 
 > **Terminal User?** 
 > Click the handle at the bottom of the screen to pull up the fully-functional interactive Bash emulator, where you can navigate the entire site's file structure via CLI!
+
+
+
+
+[^1]: June 28th: playing with canvases and how they can work using this stite

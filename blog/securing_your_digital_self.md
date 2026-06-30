@@ -1,6 +1,6 @@
-# Securing your Digital Self
 `2024-08-06`
-![[rymlingen.jpg]]
+
+![[dread.jpg]]
 
 ## password managers
 A password manager helps you create and store strong, unique passwords for all your online accounts. This eliminates the need to reuse passwords, which is a major security risk. I personal do not recommend using cloud based password managers but they are useful due to their convenience and integration with mobile devices.
@@ -13,21 +13,21 @@ A password manager helps you create and store strong, unique passwords for all y
 - [lastpass](https://www.lastpass.com/)
 
 | Feature        | KeePass | KeePassXC | pass | Bitwarden | 1Password | LastPass |
-|----------------|---------|-----------|------|-----------|-----------|----------|
+| -------------- | ------- | --------- | ---- | --------- | --------- | -------- |
 | **Pros**       |         |           |      |           |           |          |
-| Open Source    | ✅      | ✅        | ✅   | ✅        | ❌        | ❌       |
-| Open Source    | ✅      | ✅        | ✅   | ✅        | ❌        | ❌       |
-| Security       | ✅      | ✅        | ✅   | ✅        | ✅        | ✅       |
-| Local Storage  | ✅      | ✅        | ✅   | ❌        | ✅        | ❌       |
-| Cross-Platform | ✅      | ✅        | ✅   | ✅        | ✅        | ✅       |
-| Plugins        | ✅      | ✅        | ❌   | ❌        | ✅        | ✅       |
-| GUI            | ✅      | ✅        | ❌   | ✅        | ✅        | ✅       |
-| Cloud Sync     | ❌      | ❌        | ❌   | ✅        | ✅        | ✅       |
+| Open Source    | ✅       | ✅         | ✅    | ✅         | ❌         | ❌        |
+| Open Source    | ✅       | ✅         | ✅    | ✅         | ❌         | ❌        |
+| Security       | ✅       | ✅         | ✅    | ✅         | ✅         | ✅        |
+| Local Storage  | ✅       | ✅         | ✅    | ❌         | ✅         | ❌        |
+| Cross-Platform | ✅       | ✅         | ✅    | ✅         | ✅         | ✅        |
+| Plugins        | ✅       | ✅         | ❌    | ❌         | ✅         | ✅        |
+| GUI            | ✅       | ✅         | ❌    | ✅         | ✅         | ✅        |
+| Cloud Sync     | ❌       | ❌         | ❌    | ✅         | ✅         | ✅        |
 | **Cons**       |         |           |      |           |           |          |
-| Learning Curve | ❌      | ❌        | ✅   | ❌        | ❌        | ❌       |
-| CLI Only       | ❌      | ❌        | ✅   | ❌        | ❌        | ❌       |
-| No Cloud Sync  | ❌      | ❌        | ✅   | ❌        | ❌        | ❌       |
-| Paid Plans     | ❌      | ❌        | ❌   | ✅        | ✅        | ✅       |
+| Learning Curve | ❌       | ❌         | ✅    | ❌         | ❌         | ❌        |
+| CLI Only       | ❌       | ❌         | ✅    | ❌         | ❌         | ❌        |
+| No Cloud Sync  | ❌       | ❌         | ✅    | ❌         | ❌         | ❌        |
+| Paid Plans     | ❌       | ❌         | ❌    | ✅         | ✅         | ✅        |
   
 
 ## Multi-Factor Authentication (MFA)

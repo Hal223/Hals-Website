@@ -420,14 +420,15 @@ document.addEventListener("DOMContentLoaded", () => {
             language: "json",
           }).value;
           dom.contentArea.innerHTML = backArrowHtml + `<pre><code class="hljs json">${highlightedJson}</code></pre>`;
+        } else if (item.path.endsWith(".html")) {
+          dom.contentArea.innerHTML = backArrowHtml + `<iframe src="${item.path}" style="width: 100%; height: 80vh; border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); background: var(--bg-color);"></iframe>`;
         } else {
-          // Other text files like JS, HTML, CSS
+          // Other text files like JS, CSS
           let content = await response.text();
           
           let lang = 'plaintext';
           if (item.path.endsWith('.js')) lang = 'javascript';
           else if (item.path.endsWith('.css')) lang = 'css';
-          else if (item.path.endsWith('.html')) lang = 'xml'; // hljs uses xml for html
           
           const highlightedCode = hljs.highlight(content, { language: lang, ignoreIllegals: true }).value;
           dom.contentArea.innerHTML = backArrowHtml + `<pre><code class="hljs ${lang}">${highlightedCode}</code></pre>`;
